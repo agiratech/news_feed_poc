@@ -12,14 +12,14 @@ class NewsFeedsController < ApplicationController
   end
 
   def feeds
-    begin
+    # begin
       follower_ids = @user.followers.map(&:friend_id)
       follower_ids << @user.id
-      feeds = Post.where("user_id in (?)", follower_ids).order("created_at DESC").paginate(:page => params[:page], :per_page => params[:limit])
+      feeds = Post.user_feeds(follower_ids, params[:page], params[:limit])
       render :json => {"status" => 1, "feeds" => feeds}.to_json
-    rescue
-      render :json => {"status" => 0, "errors" => "Something went wrong"}.to_json
-    end
+    # rescue
+    #   render :json => {"status" => 0, "errors" => "Something went wrong"}.to_json
+    # end
   end
 
   private

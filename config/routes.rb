@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'feeds' => 'news_feeds#feeds'
-  get 'activities' => 'news_feeds#feeds'
-  get 'feeds' => 'news_feeds#feeds'
+  get 'activities' => 'news_feeds#activities'
 
 end

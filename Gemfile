@@ -24,10 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'pg'
-gem 'rack-mini-profiler'
-gem 'flamegraph'
-gem 'stackprof' # ruby 2.1+ only
-gem 'memory_profiler'
+
 gem 'delayed_job_active_record'
 gem 'activerecord-import'
 gem "daemons"

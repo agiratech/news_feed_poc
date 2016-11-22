@@ -7,7 +7,6 @@ class Post < ActiveRecord::Base
   # To create feeds
   after_create :add_to_news_feed
 
-
   # long running method
   def add_to_news_feed
     followers = Follower.where("friend_id = ?", self.user_id).map(&:user_id)
@@ -19,5 +18,25 @@ class Post < ActiveRecord::Base
     Feed.import feed_items
   end
   handle_asynchronously :add_to_news_feed
+
+
+  def self.user_feeds follower_ids, page, limit
+    posts = Post.where("user_id in (?)", follower_ids).order("created_at DESC").includes(:user).paginate(:page => page, :per_page => limit)
+    results =[]
+    posts.each do |post|
+      results << {
+        post_id: post.try(:id),
+        description: post.try(:description),
+        created_at: post.try(:created_at),
+        updated_at: post.try(:updated_at),
+        user: {
+          id: post.try(:user).try(:id),
+          user_name: post.try(:user).try(:user_name),
+          geo_location: post.try(:user).try(:geo_location)
+        }
+      }
+    end
+    return results
+  end
 
 end
