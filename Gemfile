@@ -29,6 +29,7 @@ gem 'flamegraph'
 gem 'stackprof' # ruby 2.1+ only
 gem 'memory_profiler'
 gem 'delayed_job_active_record'
+gem 'pry'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -40,6 +41,8 @@ gem 'delayed_job_active_record'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'rspec-rails', '~>3.5'
+  gem "factory_girl", "~>4.0"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
