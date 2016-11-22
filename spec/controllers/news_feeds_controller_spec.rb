@@ -5,14 +5,21 @@ RSpec.describe NewsFeedsController, :type => :controller do
 
   describe "GET index" do
 
-    it "gets all user feeds as json format" do
-      get 'index'
-      json = JSON.parse(response.body)
-      expect(response).to be_success
-      expect(response.status).to eq(200)
+    it "renders all feeds" do
+      @user = FactoryGirl.create(:user)
+      @post = FactoryGirl.create(:post, user_id: @user.id)
+      get 'feeds',{ user_id: @user.id} 
+      expect(response).to have_http_status(200)
+      expect(JSON.parse(response.body)["status"]).to eq(1)
     end
-    
-    
+
+    it "doesn't render posts without user_id" do
+      @user = FactoryGirl.create(:user)
+      @post = Post.create(id: nil, description: nil, user_id: nil)
+      get 'feeds', format: :json
+      expect(response).to have_http_status(200)
+      expect(JSON.parse(response.body)["status"]).to eq(0)
+    end
   end
 
 end
