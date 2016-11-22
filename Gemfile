@@ -30,6 +30,7 @@ gem 'pry'
 gem 'activerecord-import'
 gem "daemons"
 gem 'will_paginate'
+gem 'paperclip'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
