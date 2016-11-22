@@ -32,6 +32,7 @@ gem 'delayed_job_active_record'
 gem 'pry'
 gem 'activerecord-import'
 gem "daemons"
+gem 'will_paginate'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
