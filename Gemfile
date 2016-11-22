@@ -29,6 +29,8 @@ gem 'flamegraph'
 gem 'stackprof' # ruby 2.1+ only
 gem 'memory_profiler'
 gem 'delayed_job_active_record'
+gem 'activerecord-import'
+gem "daemons"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
