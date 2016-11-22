@@ -8,3 +8,8 @@
 ## To poplate sample data run the seed file
 
 - rake db:seed
+
+## To populate the feed we are using delayed job
+
+- To start or stop delayed job
+  * bin/delayed_job start/stop
