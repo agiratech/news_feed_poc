@@ -29,11 +29,7 @@ class Post < ActiveRecord::Base
         description: post.try(:description),
         created_at: post.try(:created_at),
         updated_at: post.try(:updated_at),
-        user: {
-          id: post.try(:user).try(:id),
-          user_name: post.try(:user).try(:user_name),
-          geo_location: post.try(:user).try(:geo_location)
-        }
+        user: post.try(:user).to_hash
       }
     end
     return results
