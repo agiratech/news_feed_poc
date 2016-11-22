@@ -4,7 +4,7 @@ class NewsFeedsController < ApplicationController
   # Action to perform news feeds listing
   def index
     begin
-      feeds = @user.user_feeds(params[:page, params[:limit]]) # Will return feeds for given user
+      feeds = @user.user_feeds(params[:page], params[:limit]) # Will return feeds for given user
       render :json => {"status" => 1, "feeds" => feeds}.to_json
     rescue
       render :json => {"status" => 0, "errors" => "Something went wrong"}.to_json
