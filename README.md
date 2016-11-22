@@ -5,6 +5,10 @@
 - Ruby - 2.3.1
 - Rails - 4.2.6
 
+## Database
+
+- PostgreSQL
+
 ## To poplate sample data run the seed file
 
 - rake db:seed
